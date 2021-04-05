@@ -1,4 +1,19 @@
-L = myList()
+class MyList():
+    def __init__(self):
+        self.capacity = 2
+        self.n = 0
+        self.A = [None]*self.capacity
+        
+    def append(self,a):
+        pass
+    def pop(self, a=-1):
+        pass
+    def insert(self,a,b):
+        pass
+    def size(self):
+        pass
+
+L = MyList()
 while True:
     cmd = input().strip().split()
     if cmd[0] == 'append':
@@ -44,3 +59,5 @@ while True:
         break
     else:
         print(" ? invalid command! Try again.")
+
+    
