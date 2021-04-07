@@ -1,21 +1,30 @@
 class MyList():
     def __init__(self):
         self.capacity = 2# myList의 용량 (저장할 수 있는 원소 개수)
-        self.n = 0# myList의 용량 (저장할 수 있는 원소 개수)
-        self.A = [None]*self.capacity# myList의 용량 (저장할 수 있는 원소 개수)
+        self.n = 0# myList의 현재 가지고있는 원소의 개수
+        self.A = [None]*self.capacity# myList의 실제 저장공간
         
     def append(self,a):
-        pass
+        if(self.capacity == self.n):
+            self.change_size(self.capacity * 2)
+        self.A[self.n] = a
+        self.n = self.n + 1
+        
     # 더 이상 빈 칸이 없을땐 capacity 2배로 doubling
     # 맨 뒤에 삽입
     # n 값 1 증가
     def pop(self, a=-1):
-        pass
+        x = self.A[a]
+        for i in range( a+1 ,self.n):
+            self.A[i-1] = self.A[i]
+            self.A[i] = None
+        self.n = self.n - 1
+        return(x)
     # 1. k 값이 주어진 경우와 주어지지 않은 경우 구별해야 함
-      # 2. x = self.A[k]
+      # 2. x = self.A[k] (없앨 타겟 지정)
       # 3. A[k]의 오른쪽의 값들이 한 칸씩 왼쪽으로 이동해 메꿈
       # 4. self.n -= 1
-      # 5. return x
+      # 5. return x 
     def insert(self,a,b):
         pass
      # 주의: k 값이 음수값일 수도 있음
@@ -26,9 +35,14 @@ class MyList():
       # 4. self.A[k] = x
       # 5. self.n += 1
     def size(self):
-        pass
+        return(self.capacity)
     def change_size(self, new_capacity):
-
+        b =[None] * new_capacity # 1. new_capacity의 크기의 리스트 B를 만듬
+        for i in range(self.n):# 2. self.A의 값을 B로 옮김
+            b[i] = self.A[i]
+        del self.A# 3. del self.A  (A 지움)
+        self.A = b
+        self.capacity = new_capacity
       # 1. new_capacity의 크기의 리스트 B를 만듬
       # 2. self.A의 값을 B로 옮김
       # 3. del self.A  (A 지움)
