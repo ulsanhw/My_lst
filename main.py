@@ -26,7 +26,10 @@ class MyList():
       # 4. self.n -= 1
       # 5. return x 
     def insert(self,a,b):
-        pass
+        if(self.a > len(self.capacity)):
+            print(raise IndexError)
+        if(self.n == self.capacity):
+            self.change_size(self.capacity * 2)
      # 주의: k 값이 음수값일 수도 있음
       # k 값이 올바른 인덱스 범위를 벗어나면, raise IndexError
       # 1. k의 범위가 올바르지 않으면 IndexError 발생시킴
